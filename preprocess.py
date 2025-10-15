@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+
 
 # URL for the Penguins dataset
 url = 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv'
@@ -25,3 +27,12 @@ df['species'] = le_species.fit_transform(df['species'])
 df['island'] = le_island.fit_transform(df['island'])
 df['sex'] = le_sex.fit_transform(df['sex'])
 print("Label encoding done")
+
+# Split the data into train and test
+train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
+print("Data split done. Train shape:", train_df.shape, "Test shape:", test_df.shape)
+
+# Save the splits
+train_df.to_csv('data/train.csv', index=False)
+test_df.to_csv('data/test.csv', index=False)
+print("Train and test files saved successfully.")
