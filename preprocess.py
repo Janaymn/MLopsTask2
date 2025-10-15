@@ -12,10 +12,10 @@ df = pd.read_csv(url).dropna()  # drop any missing values (very few)
 os.makedirs('data', exist_ok=True)
 
 # Save the clean data
-df.to_csv('data/penguins_clean.csv', index=False)
+df.to_csv('data/penguinss_clean.csv', index=False)
 
 # Load data
-df = pd.read_csv('data/penguins_clean.csv')
+df = pd.read_csv('data/penguinss_clean.csv')
 print("Data loaded successfully, shape:", df.shape)
 
 # Label Encoding 
